@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package github.com.martketplace.vkr.crypto_wallet.pkg.api.grpc.v1.client;
+
+option go_package = "github.com/martketplace-vkr/crypto-wallet/pkg/api/grpc/v1/client;client";
+
+import "v1/domain/crypto_wallet_domain.proto";
+
+service CryptoWalletClientService {
+  rpc GetOrCreateDepositAddress(GetOrCreateDepositAddressRequest) returns (GetOrCreateDepositAddressResponse);
+  rpc GetDepositAddress(GetDepositAddressRequest) returns (GetDepositAddressResponse);
+}
+
+message GetOrCreateDepositAddressRequest {
+  int64 user_id = 1;
+  string network = 2;
+  string asset = 3;
+}
+
+message GetOrCreateDepositAddressResponse {
+  .github.com.martketplace.vkr.crypto_wallet.pkg.api.grpc.v1.domain.DepositAddress deposit_address = 1;
+}
+
+message GetDepositAddressRequest {
+  int64 user_id = 1;
+  string network = 2;
+  string asset = 3;
+}
+
+message GetDepositAddressResponse {
+  .github.com.martketplace.vkr.crypto_wallet.pkg.api.grpc.v1.domain.DepositAddress deposit_address = 1;
+}
